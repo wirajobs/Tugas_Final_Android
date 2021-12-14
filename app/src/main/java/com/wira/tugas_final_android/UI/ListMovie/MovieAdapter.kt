@@ -45,7 +45,7 @@ class MovieAdapter(private val listener: MovieAdapter.Listener): RecyclerView.Ad
                     movieSeason.text = "Season : ${movieItem.season}"
                 }
 
-                movieTitle.text = movieItem._embedded.show.name
+                movieTitle.text = movieItem._embedded.show.name+ " ~ "+ movieItem.name
                 if(movieItem.rating.average != null) {
                     ratingTxt.text = movieItem.rating.average.toString()
                 }

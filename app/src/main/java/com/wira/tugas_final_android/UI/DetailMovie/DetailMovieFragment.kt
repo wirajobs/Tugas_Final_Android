@@ -1,5 +1,6 @@
 package com.wira.tugas_final_android.UI.DetailMovie
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -23,6 +24,11 @@ class DetailMovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val name = selectedMovie!!._embedded.show.name + " ~ " + selectedMovie!!.name
+        val summary = selectedMovie!!._embedded.show.summary
+        val premiered = "Premiered : "+selectedMovie!!._embedded.show.premiered
+        val season = "Season : "+selectedMovie!!.season
+        val rating = "Rating : "+ selectedMovie!!.rating.average
 
         if(selectedMovie!!._embedded.show.image != null) {
             var urlImg = ""+selectedMovie!!._embedded.show.image?.original
@@ -40,17 +46,19 @@ class DetailMovieFragment : Fragment() {
             }
         }
 
-        detailTitle.text = selectedMovie!!._embedded.show.name
+        detailTitle.text = name
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            detailSummary.text = Html.fromHtml(selectedMovie!!._embedded.show.summary, Html.FROM_HTML_MODE_LEGACY)
-        } else {
-            detailSummary.text = Html.fromHtml(selectedMovie!!._embedded.show.summary)
+        if(summary != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                detailSummary.text = Html.fromHtml(summary, Html.FROM_HTML_MODE_LEGACY)
+            } else {
+                detailSummary.text = Html.fromHtml(summary)
+            }
         }
 
-        detailPremiered.text = "Premiered : "+selectedMovie!!._embedded.show.premiered
-        detailSeason.text = "Season : "+selectedMovie!!.season
-        detailRating.text = "Rating : "+ selectedMovie!!.rating.average
+        detailPremiered.text = premiered
+        detailSeason.text = season
+        detailRating.text = rating
 
         var genre = ""
         var genreList = selectedMovie!!._embedded.show.genres
@@ -64,21 +72,52 @@ class DetailMovieFragment : Fragment() {
         }
         detailGenre.text = "Genre : $genre"
 
-        detailType.text = "Type : "+selectedMovie!!.type
-        detailStatus.text = "Status : "+selectedMovie!!._embedded.show.status
-        detailTime.text = "Time : "+selectedMovie!!._embedded.show.schedule.time
+        val tipe = "Type : "+selectedMovie!!.type
+        val status = "Status : "+selectedMovie!!._embedded.show.status
+        val time = "Time : "+selectedMovie!!._embedded.show.schedule.time
+
+        detailType.text = tipe
+        detailStatus.text = status
+        detailTime.text = time
 
         var days = ""
         var dayss = selectedMovie!!._embedded.show.schedule.days
         for((i, day) in dayss.withIndex()) {
             val t = ""+day
-            days += if(i != (genreList.size-1)) {
+            days += if(i != (dayss.size-1)) {
                 "$t, "
             } else {
                 "$t"
             }
         }
         detailDay.text = "Day : $days"
+
+        shareBtn.setOnClickListener {
+            val text = "$name\n\n" +
+                    "$summary\n\n" +
+                    "Show Info\n" +
+                    "----------------------------------\n" +
+                    "$premiered\n" +
+                    "$season\n" +
+                    "$rating\n" +
+                    "Genre : $genre\n" +
+                    "$tipe\n" +
+                    "$status\n" +
+                    "Schedule\n" +
+                    "\tTime : $time\n" +
+                    "\tDay  : $days\n" +
+                    "Link : ${selectedMovie!!.url}"
+
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(
+                    Intent.EXTRA_TEXT, text)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+        }
     }
 
     companion object {

@@ -15,7 +15,7 @@ data class DataMovieItem(
     val rating: RatingX,
     val runtime: Int,
     val season: Int?,
-    val summary: String,
+    val summary: String?,
     val type: String,
     val url: String
 )
@@ -55,7 +55,7 @@ data class Show(
     val runtime: Int,
     val schedule: Schedule,
     val status: String,
-    val summary: String,
+    val summary: String?,
     val type: String,
     val updated: Int,
     val url: String,
