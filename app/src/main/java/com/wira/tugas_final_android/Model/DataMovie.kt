@@ -14,7 +14,7 @@ data class DataMovieItem(
     val number: Int,
     val rating: RatingX,
     val runtime: Int,
-    val season: Int,
+    val season: Int?,
     val summary: String,
     val type: String,
     val url: String
@@ -45,7 +45,7 @@ data class Show(
     val externals: Externals,
     val genres: List<Any>,
     val id: Int,
-    val image: Image,
+    val image: Image?,
     val language: String,
     val name: String,
     val network: Network,
@@ -76,8 +76,8 @@ data class Externals(
 )
 
 data class Image(
-    val medium: String,
-    val original: String
+    val medium: String?,
+    val original: String?
 )
 
 data class Network(

@@ -13,20 +13,19 @@ class ListMovieViewModel: ViewModel() {
 
     private var listMovie = mutableListOf<DataMovieItem>()
 
-    suspend fun getMovies() {
+    suspend fun getMovies(adapter: MovieAdapter) {
         if(listMovie.isEmpty()) {
             var response: Response<DataMovie>? = null
             try {
                 response = RetrofitClient.instance.getMovies()
                 if(response.isSuccessful) {
-
-
+                    adapter.setData(response.body()!!)
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "${e.message}")
             }
         } else {
-
+            adapter.setData(listMovie)
         }
     }
 

@@ -13,8 +13,8 @@
         android:orientation="horizontal">
 
         <RelativeLayout
-            android:layout_width="150dp"
-            android:layout_height="180dp"
+            android:layout_width="130dp"
+            android:layout_height="160dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -24,6 +24,7 @@
                 android:id="@+id/movieThumb"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:src="@color/white" />
 
             <LinearLayout
@@ -36,8 +37,8 @@
                 android:background="@drawable/rounded_backgorund"
                 android:orientation="horizontal">
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
                     android:src="@drawable/ic_star"/>
                 <TextView
                     android:id="@+id/ratingTxt"
@@ -45,6 +46,7 @@
                     android:layout_height="wrap_content"
                     android:text="-"
                     android:textSize="12sp"
+                    android:layout_marginStart="4dp"
                     android:layout_gravity="center_vertical"
                     android:textStyle="bold"
                     android:textColor="@color/white"/>
@@ -70,14 +72,29 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/moviePremiered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/movieSeason"
+                android:text="Premiered : "
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/movieSeason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/movieGenre"
+                android:text="Season : "
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/movieGenre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Genre : "
                 android:layout_alignParentBottom="true"
-                android:textColor="@color/white"/>
+                android:text="Genre : "
+                android:textColor="@color/white" />
 
         </RelativeLayout>
 
