@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.wira.tugas_final_android.Model.DataMovieItem
 import com.wira.tugas_final_android.R
 
 class DetailMovieFragment : Fragment() {
-    
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detail_movie, container, false)
@@ -21,5 +22,6 @@ class DetailMovieFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = DetailMovieFragment()
+        var selectedMovie: DataMovieItem? = null
     }
 }

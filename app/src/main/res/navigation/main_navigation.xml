@@ -9,5 +9,14 @@
         android:id="@+id/listMovieFragment"
         android:name="com.wira.tugas_final_android.UI.ListMovie.ListMovieFragment"
         android:label="fragment_list_movie"
-        tools:layout="@layout/fragment_list_movie" />
+        tools:layout="@layout/fragment_list_movie" >
+        <action
+            android:id="@+id/action_listMovieFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.wira.tugas_final_android.UI.DetailMovie.DetailMovieFragment"
+        android:label="fragment_detail_movie"
+        tools:layout="@layout/fragment_detail_movie" />
 </navigation>

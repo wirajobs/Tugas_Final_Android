@@ -1,14 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/c1"
+    android:orientation="vertical"
     tools:context=".UI.DetailMovie.DetailMovieFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@color/c2">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Detail Movie"
+            app:navigationIcon="@drawable/ic_back"
+            app:titleTextColor="@color/white"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/detailTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:text="jiwd iwaodoiwj  iwadoiwjd iwi aiwjdoij"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="130dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/detailThumb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@color/white" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/detailSummary"
+            android:layout_width="match_parent"
+            android:textColor="@color/white"
+            android:text="awdawd awdawdawd awdoawhda wiawodiajwod iawodijaow aowjidoiehf oiwehpfoehif; ahiueg auhrgauhrgluahrgliauhrl gauhrlgua "
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_backgorund"
+        android:backgroundTint="@color/c2"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Info"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#424040"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/detailPremiered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/detailSeason"
+            android:text="Premiered : "
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/detailSeason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/detailGenre"
+            android:textStyle="bold"
+            android:text="Season : "
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/detailGenre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Genre : "
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/detailType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Type : "
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/detailStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Status : "
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="Schedule"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:id="@+id/detailTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time : "
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_marginStart="25sp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/detailDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Day : "
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:layout_marginStart="25sp"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

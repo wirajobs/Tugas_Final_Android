@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wira.tugas_final_android.Model.DataMovieItem
 import com.wira.tugas_final_android.R
+import com.wira.tugas_final_android.UI.DetailMovie.DetailMovieFragment
 import kotlinx.android.synthetic.main.fragment_list_movie.*
 import kotlinx.coroutines.launch
 
@@ -29,7 +31,8 @@ class ListMovieFragment : Fragment() {
 
         adapter = MovieAdapter(object : MovieAdapter.Listener {
             override fun onitemCLick(movieItem: DataMovieItem) {
-
+                DetailMovieFragment.selectedMovie = movieItem
+                findNavController().navigate(R.id.action_listMovieFragment_to_detailMovieFragment)
             }
         })
 
