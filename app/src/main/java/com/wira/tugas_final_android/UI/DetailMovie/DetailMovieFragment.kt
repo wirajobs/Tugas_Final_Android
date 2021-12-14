@@ -1,6 +1,7 @@
 package com.wira.tugas_final_android.UI.DetailMovie
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -24,6 +25,11 @@ class DetailMovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        toolbarDetail.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
         val name = selectedMovie!!._embedded.show.name + " ~ " + selectedMovie!!.name
         val summary = selectedMovie!!._embedded.show.summary
         val premiered = "Premiered : "+selectedMovie!!._embedded.show.premiered
@@ -117,6 +123,13 @@ class DetailMovieFragment : Fragment() {
 
             val shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(shareIntent)
+        }
+
+        lebihLanjutBtn.setOnClickListener {
+            val url = selectedMovie!!.url
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
         }
     }
 
