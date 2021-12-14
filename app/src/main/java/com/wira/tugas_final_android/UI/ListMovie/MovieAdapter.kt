@@ -10,12 +10,16 @@ import com.wira.tugas_final_android.Model.DataMovieItem
 import com.wira.tugas_final_android.R
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MovieAdapter: RecyclerView.Adapter<MovieAdapter.Holder>() {
+class MovieAdapter(private val listener: MovieAdapter.Listener): RecyclerView.Adapter<MovieAdapter.Holder>() {
     private val TAG = "MovieAdapter"
     private var listMovie = mutableListOf<DataMovieItem>()
 
+    interface Listener {
+        fun onitemCLick(movieItem: DataMovieItem)
+    }
+
     inner class Holder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        fun bind(movieItem: DataMovieItem) {
+        fun bind(movieItem: DataMovieItem, listener: Listener) {
             with(itemView) {
 
                 if(movieItem._embedded.show.image != null) {
@@ -57,6 +61,11 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.Holder>() {
                     }
                 }
                 movieGenre.text = "Genre : $genre"
+
+                this.setOnClickListener {
+                    listener.onitemCLick(movieItem)
+                }
+
             }
         }
     }
@@ -72,7 +81,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.Holder>() {
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(listMovie[position])
+        holder.bind(listMovie[position], listener)
     }
 
     override fun getItemCount(): Int {

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.wira.tugas_final_android.Model.DataMovieItem
 import com.wira.tugas_final_android.R
 import kotlinx.android.synthetic.main.fragment_list_movie.*
 import kotlinx.coroutines.launch
@@ -26,7 +27,11 @@ class ListMovieFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = MovieAdapter()
+        adapter = MovieAdapter(object : MovieAdapter.Listener {
+            override fun onitemCLick(movieItem: DataMovieItem) {
+
+            }
+        })
 
         rcView_list_movie.setHasFixedSize(true)
         rcView_list_movie.layoutManager = LinearLayoutManager(requireContext())
