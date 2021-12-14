@@ -34,7 +34,7 @@ data class ImageX(
 )
 
 data class RatingX(
-    val average: Any
+    val average: Any?
 )
 
 data class Show(
